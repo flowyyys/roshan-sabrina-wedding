@@ -1,6 +1,8 @@
 import assert from "node:assert/strict";
 import { access, readFile } from "node:fs/promises";
 import test from "node:test";
+import { strFromU8, unzipSync } from "fflate";
+import { createRsvpWorkbook } from "../app/rsvp-workbook.ts";
 
 const root = new URL("../", import.meta.url);
 
@@ -72,6 +74,50 @@ test("produces the deployable server and refreshed visual assets", async () => {
     access(new URL("public/media/our-song.mp4", root)),
     access(new URL("app/invite/roshansabrina/locations/page.tsx", root)),
     access(new URL("app/invite/sabrinaroshan/locations/page.tsx", root)),
+    access(new URL("app/admin/rsvps/route.ts", root)),
+    access(new URL("app/api/admin/rsvp-export/route.ts", root)),
     access(new URL("drizzle/0000_burly_lady_ursula.sql", root)),
   ]);
+});
+
+test("produces a Cloudflare-ready Worker with automatic D1 provisioning", async () => {
+  const config = JSON.parse(
+    await readFile(new URL("dist/server/wrangler.json", root), "utf8"),
+  );
+
+  assert.equal(config.name, "roshan-sabrina-wedding");
+  assert.equal(config.main, "index.js");
+  assert.equal(config.assets.directory, "../client");
+  assert.deepEqual(config.d1_databases, [{ binding: "DB" }]);
+});
+
+test("creates bride and groom compatible Excel workbooks with two sheets", () => {
+  const workbook = createRsvpWorkbook({
+    accepted: [
+      {
+        name: "Alice & Bob",
+        guests: 2,
+        message: "Can’t wait!",
+        created_at: "2026-07-23T18:00:00.000Z",
+      },
+    ],
+    rejected: [
+      {
+        name: "Charlie",
+        guests: 0,
+        message: null,
+        created_at: "2026-07-23T18:05:00.000Z",
+      },
+    ],
+  });
+  const files = unzipSync(workbook);
+  const workbookXml = strFromU8(files["xl/workbook.xml"]);
+  const acceptedXml = strFromU8(files["xl/worksheets/sheet1.xml"]);
+  const rejectedXml = strFromU8(files["xl/worksheets/sheet2.xml"]);
+
+  assert.match(workbookXml, /name="Accepted"/);
+  assert.match(workbookXml, /name="Rejected"/);
+  assert.match(acceptedXml, /Alice &amp; Bob/);
+  assert.match(acceptedXml, /Can’t wait!/);
+  assert.match(rejectedXml, /Charlie/);
 });

@@ -8,6 +8,16 @@ export type RsvpInput = {
   message: string;
 };
 
+export type StoredRsvp = {
+  id: number;
+  invitation: RsvpInput["invitation"];
+  name: string;
+  attendance: RsvpInput["attendance"];
+  guests: number;
+  message: string | null;
+  created_at: string;
+};
+
 const createTableSql = `
   CREATE TABLE IF NOT EXISTS rsvps (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -46,4 +56,26 @@ export async function saveRsvp(input: RsvpInput) {
       new Date().toISOString(),
     )
     .run();
+}
+
+export async function listRsvpsByInvitation(
+  invitation: RsvpInput["invitation"],
+) {
+  const database = env.DB;
+  if (!database) {
+    throw new Error("RSVP storage is not available.");
+  }
+
+  await database.prepare(createTableSql).run();
+  const result = await database
+    .prepare(
+      `SELECT id, invitation, name, attendance, guests, message, created_at
+       FROM rsvps
+       WHERE invitation = ?
+       ORDER BY created_at DESC, id DESC`,
+    )
+    .bind(invitation)
+    .all<StoredRsvp>();
+
+  return result.results;
 }

@@ -51,6 +51,22 @@ The form asks only for name, attendance, number attending and a note. Accepting
 shows a flower celebration; declining shows a gentle farewell animation.
 Submissions are validated by `app/api/rsvp/route.ts` and saved to Cloudflare D1.
 
+## Private Excel exports
+
+Open `/admin/rsvps` on the deployed domain and sign in with:
+
+- Username: `admin`
+- Password: the value of the Cloudflare `RSVP_ADMIN_PASSWORD` secret
+
+The private page downloads two current Excel workbooks:
+
+- `bride-rsvps.xlsx` for the `sabrinaroshan` invitation
+- `groom-rsvps.xlsx` for the `roshansabrina` invitation
+
+Each workbook contains `Accepted` and `Rejected` worksheet tabs. The files are
+generated from D1 when downloaded, so they always contain the latest saved
+responses. Never add the administrator password to this repository.
+
 ## Local development
 
 ```bash
@@ -58,7 +74,18 @@ npm install
 npm run dev
 ```
 
-## Hosting
+## Cloudflare hosting
+
+Connect this repository to Cloudflare Workers Builds with:
+
+- Build command: `npm run build`
+- Deploy command: `npx wrangler deploy --config dist/server/wrangler.json`
+- Production branch: `main`
+
+The `DB` binding is declared without an account-specific ID so Wrangler can
+provision and retain the production D1 database automatically. After the first
+deployment, add `RSVP_ADMIN_PASSWORD` under the Worker’s **Settings → Variables
+and Secrets** as an encrypted secret, then deploy that settings change.
 
 The production build targets Cloudflare Workers because a static GitHub Pages
 site cannot run the RSVP database or server endpoint.
