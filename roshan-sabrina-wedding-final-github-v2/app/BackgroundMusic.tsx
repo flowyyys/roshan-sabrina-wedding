@@ -9,16 +9,19 @@ export function BackgroundMusic({
   showSong = true,
   volume = 0.14,
   source = BACKGROUND_MUSIC,
-}: { showSong?: boolean; volume?: number; source?: string }) {
+  startOnInvitationOpen = false,
+}: { showSong?: boolean; volume?: number; source?: string; startOnInvitationOpen?: boolean }) {
   const [videoOpen, setVideoOpen] = useState(false);
   const [ambientMuted, setAmbientMuted] = useState(false);
   const audioRef = useRef<HTMLAudioElement>(null);
+  const playbackRequested = useRef(false);
   const videoRef = useRef<HTMLVideoElement>(null);
   const videoPanelRef = useRef<HTMLDivElement>(null);
 
   function startAmbientMusic() {
     const audio = audioRef.current;
     if (!audio) return;
+    playbackRequested.current = true;
     audio.volume = volume;
     void audio.play().catch(() => {
       // Browsers can require the guest's first interaction before sound starts.
@@ -68,22 +71,28 @@ export function BackgroundMusic({
   }
 
   useEffect(() => {
-    startAmbientMusic();
+    // The custom event runs synchronously within the Open invitation click,
+    // retaining the browser's user activation for audible playback on phones.
+    const openInvitation = () => startAmbientMusic();
+    window.addEventListener("invitation:open", openInvitation);
 
     const retryAmbientAfterGesture = () => {
       startAmbientMusic();
-      window.removeEventListener("pointerdown", retryAmbientAfterGesture, true);
+      window.removeEventListener("click", retryAmbientAfterGesture, true);
       window.removeEventListener("keydown", retryAmbientAfterGesture, true);
     };
 
-    window.addEventListener("pointerdown", retryAmbientAfterGesture, true);
-    window.addEventListener("keydown", retryAmbientAfterGesture, true);
+    if (!startOnInvitationOpen) {
+      startAmbientMusic();
+      window.addEventListener("click", retryAmbientAfterGesture, true);
+      window.addEventListener("keydown", retryAmbientAfterGesture, true);
+    }
     return () => {
-      window.removeEventListener("pointerdown", retryAmbientAfterGesture, true);
+      window.removeEventListener("invitation:open", openInvitation);
+      window.removeEventListener("click", retryAmbientAfterGesture, true);
       window.removeEventListener("keydown", retryAmbientAfterGesture, true);
     };
-  }, []);
-
+  }, [startOnInvitationOpen]);
   useEffect(() => {
     const handleFullscreenChange = () => {
       if (videoOpen && document.fullscreenElement !== videoPanelRef.current) {
@@ -104,11 +113,13 @@ export function BackgroundMusic({
       <audio
         ref={audioRef}
         src={source}
-        autoPlay
+        autoPlay={!startOnInvitationOpen}
         loop
         muted={ambientMuted}
         preload="auto"
-        onCanPlay={startAmbientMusic}
+        onCanPlay={() => {
+          if (!startOnInvitationOpen || playbackRequested.current) startAmbientMusic();
+        }}
       />
 
       <div className="music-controls">

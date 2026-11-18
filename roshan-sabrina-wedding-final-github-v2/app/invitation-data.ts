@@ -5,12 +5,12 @@ const CHURCH_MAP =
 const VANYA_MAP =
   "https://maps.app.goo.gl/JEahVuvsosMeoNbM7?g_st=ic";
 const GOA_MAP =
-  "https://www.google.com/maps/search/?api=1&query=Goa%2C%20India";
+  "https://www.google.com/maps/search/?api=1&query=Mahalasa%20Hall%2C%20Shri%20Mahalasa%20Narayani%20Temple%2C%20Mardol%2C%20Goa%2C%20403404";
 
 const BANGALORE_CALENDAR =
   "https://calendar.google.com/calendar/render?action=TEMPLATE&text=Roshan%20with%20Sabrina%20%E2%80%94%20Bangalore%20Wedding&dates=20261230T093000Z%2F20261230T163000Z&location=Holy%20Trinity%20Church%2C%20Kodigehalli%2C%20Bangalore";
 const GOA_CALENDAR =
-  "https://calendar.google.com/calendar/render?action=TEMPLATE&text=Roshan%20with%20Sabrina%20%E2%80%94%20Goa%20Wedding&dates=20270210%2F20270211&location=Goa%2C%20India";
+  "https://calendar.google.com/calendar/render?action=TEMPLATE&text=Roshan%20with%20Sabrina%20%E2%80%94%20Goa%20Wedding&dates=20270210T061300Z%2F20270210T061300Z&location=Mahalasa%20Hall%2C%20Shri%20Mahalasa%20Narayani%20Temple%2C%20Mardol%2C%20Goa%2C%20403404";
 
 export const invitations: Record<
   "roshansabrina" | "sabrinaroshan",
@@ -43,19 +43,19 @@ export const invitations: Record<
       month: "February",
       year: "2027",
       ariaLabel: "Wednesday, 10 February 2027",
-      countdownTarget: "2027-02-10T00:00:00+05:30",
+      countdownTarget: "2027-02-10T11:43:00+05:30",
     },
     calendarUrl: GOA_CALENDAR,
     locationSummary: "Goa, India",
     locationMapUrl: GOA_MAP,
     locationLabel: "Location",
-    locationsIntro: "One beautiful celebration in Goa.",
+    locationsIntro: "Join us at Mahalasa Hall for our wedding celebration.",
     locations: [
       {
         label: "Wedding Celebration",
-        name: "Goa",
-        time: "Time to be announced",
-        address: "The exact venue address will be shared soon.",
+        name: "Mahalasa Hall",
+        time: "11:43 AM",
+        address: "Shri Mahalasa Narayani Temple, Mardol, Goa, 403404",
         mapUrl: GOA_MAP,
       },
     ],
@@ -103,7 +103,7 @@ export const invitations: Record<
       {
         label: "Then · Wedding Reception",
         name: "Vanya Luxury Boutique Resort",
-        time: "6:00 PM",
+        time: "6:30 PM",
         address: "Bangalore, Karnataka",
         mapUrl: VANYA_MAP,
       },

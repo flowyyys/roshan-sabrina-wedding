@@ -205,3 +205,78 @@
 @media (min-width:650px) {
   .christian-audio .music-controls {right:max(16px,calc((100vw - 520px)/2 + 16px));}
 }
+
+.scene-subpage--christian .location-card__copy strong {font-family:var(--font-serif),Georgia,serif;font-size:28px;font-weight:600;font-style:normal;line-height:1.4;letter-spacing:.04em;font-variant-numeric:lining-nums tabular-nums;}
+
+.scene-dock .scene-rsvp {font-weight:700;justify-content:center;text-align:center;}
+.scene-dock a:not(.scene-rsvp) {font-size:9.5px;}
+
+.christian-world .scene-cross--image {width:35px;height:44px;object-fit:contain;margin:0 auto 18px;}
+@media (max-height:740px) {
+ .christian-world .scene-cross--image {width:30px;height:38px;margin-bottom:12px;}
+}
+
+/* Keep the opening seal screen free of music controls on both invitations. */
+body:has(.scene-envelope) .christian-audio .music-controls {visibility:hidden;pointer-events:none;}
+
+/* Wide screens get a landscape composition; the approved phone layout stays below 900px. */
+@media (min-width:900px) {
+ .christian-world .scene-hero {display:grid;grid-template-columns:52% 48%;grid-template-rows:minmax(0,1fr) auto auto;width:100%;max-width:none;min-height:680px;height:100svh;margin:0;box-shadow:none;}
+ .scene-hero .scene-landscape {left:auto;right:0;width:67%;object-position:center bottom;}
+ .scene-hero .scene-sky {background:linear-gradient(90deg,#211c36 0%,#211c36f5 29%,#211c36c4 43%,#211c3622 64%,transparent 85%),linear-gradient(0deg,#16132699,transparent 35%);}
+ .scene-hero .scene-heading {position:relative;inset:auto;grid-column:1;grid-row:1;align-self:center;justify-self:center;width:100%;max-width:740px;padding:64px 36px 20px;}
+ .scene-hero .scene-heading h1 {font-size:clamp(68px,7.2vw,110px);margin-top:22px;}
+ .scene-hero .scene-heading h1 em {font-size:34px;margin:13px 0;}
+ .scene-hero .scene-heading .scene-overline {font-size:10px;}
+ .scene-hero .scene-vow {display:block;font-size:20px;margin-top:22px;}
+ .scene-hero .scene-date {position:relative;inset:auto;grid-column:1;grid-row:2;margin:0 0 25px;padding:0 20px;}
+ .scene-hero .scene-date p {font-size:10px;}
+ .scene-hero .scene-date strong {font-size:32px;}
+ .scene-hero .scene-city {font-size:11px;margin-top:12px;}
+ .scene-hero .scene-dock {position:relative;inset:auto;grid-column:1;grid-row:3;width:min(480px,85%);margin:0 auto 32px;}
+ .scene-hero .scene-dock a:not(.scene-rsvp) {font-size:12px;}
+ .scene-hero .scene-dock .scene-rsvp {font-size:14px;min-height:52px;}
+ .scene-hero .scene-monogram {top:28px;left:36px;font-size:28px;}
+ .christian-audio .music-controls {top:24px;right:28px;}
+ .christian-audio .music-mute {font-size:10px;min-height:40px;padding:8px 14px;}
+ .scene-envelope::before,.scene-envelope::after {max-width:none;margin:0;inset:30px;border-radius:200px 200px 8px 8px;}
+ .scene-envelope::after {inset:40px;}
+ .christian-world .scene-details {max-width:none;padding:90px 7vw 70px;}
+ .scene-details h2 {font-size:52px;}
+ .scene-details > .scene-overline {font-size:10px;}
+ .scene-family {display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:32px;max-width:950px;}
+ .scene-family h3 {font-size:48px;}
+ .scene-family p {font-size:14px;max-width:390px;}
+ .scene-details-date {font-size:25px;max-width:600px;}
+ .scene-countdown {font-size:12px;}
+ .scene-calendar,.scene-back {font-size:12px;}
+ .scene-subpage {padding:28px 5vw 50px;}
+ .scene-subpage .subpage-shell__art {width:100%;max-width:none;left:0;transform:none;object-position:center 65%;opacity:.4;}
+ .scene-subpage .subpage-panel {max-width:1080px;}
+ .scene-subpage .subpage-nav {margin-bottom:40px;padding-top:0;}
+ .scene-subpage .subpage-nav a {font-size:11px;}
+ .scene-subpage .rsvp-panel {display:grid;grid-template-columns:1fr 1fr;column-gap:70px;align-items:center;}
+ .scene-subpage .rsvp-panel > .subpage-nav {grid-column:1 / -1;}
+ .scene-subpage .rsvp-header {grid-column:1;grid-row:2;text-align:left;margin:0;}
+ .scene-subpage .rsvp-header::before {font-size:38px;}
+ .scene-subpage .rsvp-header h1 {font-size:76px;max-width:480px;}
+ .scene-subpage .rsvp-header > p:not(.invite-eyebrow) {font-size:23px;max-width:420px;margin:24px 0 0;}
+ .scene-subpage .rsvp-form {grid-column:2;grid-row:2;width:100%;padding:30px;}
+ .scene-subpage .locations-grid {grid-template-columns:repeat(2,minmax(0,1fr));gap:28px;align-items:stretch;}
+ .scene-subpage .locations-grid--single {grid-template-columns:1fr;width:100%;max-width:600px;}
+ .scene-subpage .locations-header > p:not(.invite-eyebrow) {max-width:650px;font-size:21px;}
+ .scene-subpage .location-card {padding:32px;}
+ .scene-subpage .location-card h2 {font-size:42px;}
+ .scene-subpage .locations-footer p {max-width:600px;font-size:22px;}
+}
+@media (min-width:900px) {
+ .scene-hero .scene-landscape {width:min(67%,110svh);}
+}
+@media (min-width:900px) {
+ .scene-subpage .subpage-panel {width:100%;}
+}
+
+/* Feather the desktop artwork into the surrounding evening colour. */
+@media (min-width:900px) {
+ .scene-hero .scene-landscape {mask-image:linear-gradient(to right,transparent 0%,#000 28%,#000 100%);}
+}

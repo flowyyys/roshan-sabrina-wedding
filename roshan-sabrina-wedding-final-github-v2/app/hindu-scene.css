@@ -1,0 +1,91 @@
+/* Temple invitation: warm burgundy, brass and marigold, scoped to Hindu routes. */
+.hindu-world {--scene-cream:#fff3dc;--scene-gold:#f1cc89;background:#28151e;}
+.hindu-world .scene-hero {background:#3a2230;}
+.hindu-world .scene-sky {background:linear-gradient(180deg,#240e2890 0%,#2d132c22 38%,transparent 49%,#32182422 65%,#230f1ee8 100%);}
+.hindu-world .scene-light {background:radial-gradient(ellipse at 28% 25%,#efaa5126,transparent 45%),radial-gradient(ellipse at 70% 60%,#ffd79c22,transparent 42%);}
+.hindu-world .scene-heading {top:2%;}
+.scene-ganesha {display:block;width:44px;height:44px;border:1px solid #f1cc8970;border-radius:50%;object-fit:cover;object-position:center 42%;margin:0 auto 12px;box-shadow:0 0 25px #efaa512a;}
+.hindu-world .scene-heading .scene-overline {font-size:8px;letter-spacing:.18em;color:#ffe4b5;}
+.hindu-world .scene-heading h1 {font-size:clamp(58px,15.5vw,78px);margin-top:15px;}
+.hindu-world .scene-heading h1 em {font-size:25px;margin:10px 0;}
+.hindu-world .scene-vow {font-size:14px;color:#ffeedcdd;margin-top:10px;}
+.hindu-world .scene-date {text-shadow:0 2px 20px #230f1e;}
+.hindu-world .scene-date strong {font-size:25px;}
+.hindu-world .scene-dock {border-color:#f1cc8955;background:#301723bf;}
+.hindu-world .scene-dock .scene-rsvp {background:#f7deb0;color:#422033;}
+.hindu-world .scene-dock .scene-rsvp:hover {background:#ffebc9;}
+.hindu-world .scene-petals span {background:linear-gradient(45deg,#cc7526,#ffc975);width:8px;height:10px;}
+.hindu-world .scene-envelope {background:radial-gradient(ellipse at 50% 38%,#6a3b46 0%,#422232 47%,#281521 100%);}
+.hindu-world .scene-envelope::before {border-color:#f1cc8950;}
+.hindu-world .envelope-cross {font-size:35px;line-height:1.2;margin-bottom:24px;}
+.hindu-world .envelope-title {font-size:clamp(38px,10vw,54px);line-height:1.1;max-width:440px;}
+.hindu-world .envelope-seal {background:radial-gradient(circle at 35% 25%,#bd9155,#93612e 58%,#774424);border-color:#f1cc89;box-shadow:inset 0 0 0 6px #b3844c55,inset 0 0 0 8px #f1cc8944,0 16px 50px #210c1e44;}
+.hindu-world .scene-details {background:linear-gradient(180deg,#28151e,#4a2938 55%,#28151e);color:#fff3dc;border-color:#f1cc8933;}
+.hindu-world .scene-details h2 {font-size:38px;}
+.hindu-world .scene-details h2 em,.hindu-world .scene-details > .scene-overline,.hindu-world .scene-family > span {color:#f1cc89;}
+.hindu-world .scene-family p {color:#ebd5d5;max-width:360px;font-size:11px;line-height:1.9;}
+.scene-hosts {max-width:390px;margin:0 auto 40px;padding-bottom:28px;border-bottom:1px solid #f1cc8933;}
+.scene-hosts p {font:21px/1.3 var(--font-serif),Georgia,serif;color:#f1cc89;margin:0 0 14px;text-wrap:balance;}
+.scene-hosts span {font:italic 17px/1.5 var(--font-serif),Georgia,serif;color:#f0dfd2;}
+.hindu-world .scene-countdown,.hindu-world .scene-back {color:#e9c796;}
+.hindu-world .scene-calendar {border-color:#f1cc8980;}
+.hindu-audio .music-mute {background:#321724dd;border-color:#f1cc8966;color:#fff0d7;}
+.scene-subpage--hindu {--paper:#fff3dc;--ink:#fff3dc;--taupe:#ebd5d5;--sage-deep:#f1cc89;--maroon:#f7deb0;--soft-gold:#f1cc89;background:#2f1925;color:#fff3dc;}
+.scene-subpage--hindu::after {background:linear-gradient(180deg,#2c1423dc,#452334ad 55%,#26131fdc);}
+.scene-subpage--hindu .subpage-header::before {content:"श्री";font-size:31px;color:#f1cc89;}
+.scene-subpage--hindu .rsvp-form,.scene-subpage--hindu .location-card {border-color:#f1cc8955;background:linear-gradient(145deg,#70404a88,#351c29bd);box-shadow:0 18px 50px #210b1f26;}
+.scene-subpage--hindu .field input,.scene-subpage--hindu .field textarea {background:#2a122155;border-color:#f1cc8945;color:#fff3dc;}
+.scene-subpage--hindu .field label,.scene-subpage--hindu .attendance legend,.scene-subpage--hindu .invite-eyebrow,.scene-subpage--hindu .location-card__label,.scene-subpage--hindu .location-card__copy strong,.scene-subpage--hindu .locations-footer a {color:#f1cc89;}
+.scene-subpage--hindu .subpage-header h1,.scene-subpage--hindu .location-card h2 {color:#fff3dc;}
+.scene-subpage--hindu .subpage-header > p:not(.invite-eyebrow),.scene-subpage--hindu .location-card__copy > p:last-child,.scene-subpage--hindu .locations-footer p {color:#ebd5d5;}
+.scene-subpage--hindu .action-button--primary,.scene-subpage--hindu .attendance__option input:checked + span {background:#f7deb0;border-color:#f7deb0;color:#422033;}
+.scene-subpage--hindu .action-button--primary:hover {background:#ffebc9;}
+.scene-subpage--hindu .attendance__option span {border-color:#f1cc8950;color:#fff0d7;background:#2b132133;}
+.scene-subpage--hindu .field input:focus,.scene-subpage--hindu .field textarea:focus {border-color:#f1cc89;box-shadow:0 0 0 3px #f1cc8915;}
+@media (min-width:650px) {
+ .hindu-world {background:radial-gradient(ellipse at top,#5a303e,#24131e);}
+ .hindu-world .scene-heading h1 {font-size:80px;}
+}
+@media (max-height:740px) {
+ .hindu-world .scene-heading {top:4%;}
+ .scene-ganesha {width:36px;height:36px;margin-bottom:10px;}
+ .hindu-world .scene-heading h1 {font-size:54px;margin-top:12px;}
+ .hindu-world .scene-heading h1 em {font-size:22px;margin:7px 0;}
+ .hindu-world .scene-vow {font-size:13px;margin-top:10px;}
+ .hindu-world .scene-date strong {font-size:23px;}
+}
+@media (max-height:740px) {
+ .hindu-world .scene-vow {display:none;}
+}
+
+.hindu-world .scene-om {display:block;width:64px;height:64px;object-fit:contain;margin:0 auto 12px;filter:drop-shadow(0 0 12px #efaa5126);}
+@media (max-height:740px) {
+ .hindu-world .scene-om {width:48px;height:48px;margin-bottom:10px;}
+}
+
+.hindu-world .scene-vow {position:relative;top:-10px;}
+.hindu-world .scene-venue {max-width:330px;margin:14px auto;font-size:12px;line-height:1.8;color:#ebd5d5;}
+
+.scene-subpage--hindu .location-card__copy strong {font-family:var(--font-serif),Georgia,serif;font-size:28px;font-weight:600;font-style:normal;line-height:1.4;letter-spacing:.04em;font-variant-numeric:lining-nums tabular-nums;}
+.scene-subpage--hindu .location-postcode {display:inline;font-family:var(--font-serif),Georgia,serif;font-size:1em;font-weight:600;font-style:normal;letter-spacing:normal;font-variant-numeric:lining-nums tabular-nums;}
+
+@media (min-width:900px) {
+ .hindu-world .scene-heading {inset:auto;}
+ .hindu-world .scene-heading h1 {font-size:clamp(68px,7.2vw,110px);margin-top:22px;}
+ .hindu-world .scene-heading h1 em {font-size:32px;margin:13px 0;}
+ .hindu-world .scene-heading .scene-overline {font-size:10px;}
+ .hindu-world .scene-vow {display:block;font-size:19px;top:0;margin-top:22px;}
+ .hindu-world .scene-date {inset:auto;}
+ .hindu-world .scene-date strong {font-size:32px;}
+ .hindu-world .scene-dock {inset:auto;}
+ .hindu-world .scene-sky {background:linear-gradient(90deg,#28151e 0%,#28151ef5 29%,#28151ec4 43%,#28151e22 64%,transparent 85%),linear-gradient(0deg,#230f1e99,transparent 35%);}
+ .hindu-world .scene-details h2 {font-size:52px;}
+ .hindu-world .scene-family p {font-size:14px;max-width:390px;}
+ .hindu-world .scene-hosts {max-width:650px;}
+ .hindu-world .scene-hosts p {font-size:25px;}
+ .hindu-world .scene-hosts span {font-size:21px;}
+ .hindu-world .scene-venue {font-size:15px;max-width:480px;}
+}
+@media (min-width:900px) {
+ .hindu-world .scene-landscape {object-position:center 70%;}
+}
