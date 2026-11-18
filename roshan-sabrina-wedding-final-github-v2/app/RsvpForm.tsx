@@ -89,9 +89,9 @@ export function RsvpForm({
   }
 
   return (
-    <main className={`subpage-shell subpage-shell--${data.theme} ${data.theme === "christian" ? "scene-subpage" : ""}`}>
-      <img className="subpage-shell__art" src={data.theme === "christian" ? "/christian-chapel-garden.png" : data.artUrl} alt="" />
-      {data.theme === "christian" && <InvitationAtmosphere />}
+    <main className={`subpage-shell subpage-shell--${data.theme} scene-subpage scene-subpage--${data.theme}`}>
+      <img className="subpage-shell__art" src={data.theme === "christian" ? "/christian-chapel-garden.png" : "/hindu-temple-garden.png"} alt="" />
+      <InvitationAtmosphere />
       {responseAnimation?.type === "accept" ? (
         <div
           className="acceptance-bloom"
@@ -140,7 +140,7 @@ export function RsvpForm({
 
       <div className="subpage-panel rsvp-panel">
         <nav className="subpage-nav" aria-label="Invitation navigation">
-          <Link href={data.theme === "christian" ? `${basePath}?view=invitation` : basePath}>← Invitation</Link>
+          <Link href={`${basePath}?view=invitation`}>← Invitation</Link>
           <Link href={`${basePath}/locations`}>{data.locationLabel} →</Link>
         </nav>
 

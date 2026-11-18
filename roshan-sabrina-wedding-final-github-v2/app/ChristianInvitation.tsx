@@ -34,7 +34,7 @@ export function ChristianInvitation({ data, initiallyOpened = false }: { data: L
           <span className="envelope-cross" aria-hidden="true">✝</span>
           <p className="scene-overline">A little invitation</p>
           <p className="envelope-title">to a lifetime<br /><em>of love.</em></p>
-          <button className="envelope-seal" onClick={() => setOpened(true)} aria-label="Open Roshan and Sabrina’s invitation">
+          <button className="envelope-seal" onClick={() => { window.dispatchEvent(new Event("invitation:open")); setOpened(true); }} aria-label="Open Roshan and Sabrina’s invitation">
             <span>R <i>&</i> S</span>
             <small>Open invitation</small>
             <b aria-hidden="true">↓</b>
@@ -55,7 +55,7 @@ export function ChristianInvitation({ data, initiallyOpened = false }: { data: L
         </div>
         <div className="scene-monogram" aria-hidden="true">R<span>&</span>S</div>
         <header className="scene-heading">
-          <span className="scene-cross" aria-hidden="true">✝</span>
+          <img className="scene-cross scene-cross--image" src="/floral-cross.png" alt="Floral Christian cross" />
           <p className="scene-overline">Together with our families</p>
           <h1><span>Roshan</span><em>&</em><span>Sabrina</span></h1>
           <p className="scene-vow">Faith brought us here.<br />Love leads us forward.</p>
@@ -66,9 +66,9 @@ export function ChristianInvitation({ data, initiallyOpened = false }: { data: L
           <span className="scene-city">{data.locationSummary}</span>
         </div>
         <nav className="scene-dock" aria-label="Invitation navigation">
-          <a href="#celebration"><span aria-hidden="true">✧</span>The wedding</a>
-          <Link href={`${basePath}/rsvp`} className="scene-rsvp">RSVP <span aria-hidden="true">↗</span></Link>
-          <Link href={`${basePath}/locations`}><span aria-hidden="true">⌖</span>Locations</Link>
+          <a href="#celebration">The wedding</a>
+          <Link href={`${basePath}/rsvp`} className="scene-rsvp">RSVP</Link>
+          <Link href={`${basePath}/locations`}>Locations</Link>
         </nav>
       </section>
 

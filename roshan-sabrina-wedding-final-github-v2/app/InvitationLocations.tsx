@@ -7,12 +7,12 @@ export function InvitationLocations({ data }: { data: InvitationData }) {
   const basePath = `/invite/${data.accessCode}`;
 
   return (
-    <main className={`subpage-shell subpage-shell--${data.theme} ${data.theme === "christian" ? "scene-subpage" : ""}`}>
-      <img className="subpage-shell__art" src={data.theme === "christian" ? "/christian-chapel-garden.png" : data.artUrl} alt="" />
-      {data.theme === "christian" && <InvitationAtmosphere />}
+    <main className={`subpage-shell subpage-shell--${data.theme} scene-subpage scene-subpage--${data.theme}`}>
+      <img className="subpage-shell__art" src={data.theme === "christian" ? "/christian-chapel-garden.png" : "/hindu-temple-garden.png"} alt="" />
+      <InvitationAtmosphere />
       <div className="subpage-panel locations-panel">
         <nav className="subpage-nav" aria-label="Invitation navigation">
-          <Link href={data.theme === "christian" ? `${basePath}?view=invitation` : basePath}>← Invitation</Link>
+          <Link href={`${basePath}?view=invitation`}>← Invitation</Link>
           <Link href={`${basePath}/rsvp`}>RSVP →</Link>
         </nav>
 
@@ -40,7 +40,9 @@ export function InvitationLocations({ data }: { data: InvitationData }) {
                 <p className="location-card__label">{location.label}</p>
                 <h2>{location.name}</h2>
                 <strong>{location.time}</strong>
-                <p>{location.address}</p>
+                <p>{data.theme === "hindu" ? location.address.split(/(\b\d{6}\b)/).map((part, index) =>
+                  /^\d{6}$/.test(part) ? <span className="location-postcode" key={index}>{part}</span> : part
+                ) : location.address}</p>
               </div>
               <a
                 className="action-button action-button--primary location-map"

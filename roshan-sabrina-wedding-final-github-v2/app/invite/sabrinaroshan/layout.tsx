@@ -7,7 +7,7 @@ export default function ChristianInvitationLayout({ children }: { children: Reac
     <>
       {children}
       <div className="christian-audio">
-        <BackgroundMusic showSong={false} volume={1} source="/media/background-music-mellow-v2.mp3" />
+        <BackgroundMusic startOnInvitationOpen showSong={false} volume={1} source="/media/background-music-mellow-v2.mp3" />
       </div>
     </>
   );
