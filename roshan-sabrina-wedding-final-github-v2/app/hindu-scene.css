@@ -89,3 +89,6 @@
 @media (min-width:900px) {
  .hindu-world .scene-landscape {object-position:center 70%;}
 }
+
+/* Keep the Hindu blessing independent of shared stylesheet loading order. */
+.scene-subpage.scene-subpage--hindu .subpage-header::before {content:"श्री";font-size:31px;color:#f1cc89;}

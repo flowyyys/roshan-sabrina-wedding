@@ -17,6 +17,7 @@ export function InvitationLocations({ data }: { data: InvitationData }) {
         </nav>
 
         <header className="subpage-header locations-header">
+          {data.theme === "christian" && <img className="location-cross-image" src="/floral-cross.png" alt="Floral Christian cross" />}
           <p className="invite-eyebrow">
             Roshan {data.theme === "christian" ? "weds" : "with"} Sabrina
           </p>

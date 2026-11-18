@@ -280,3 +280,6 @@ body:has(.scene-envelope) .christian-audio .music-controls {visibility:hidden;po
 @media (min-width:900px) {
  .scene-hero .scene-landscape {mask-image:linear-gradient(to right,transparent 0%,#000 28%,#000 100%);}
 }
+
+.scene-subpage.scene-subpage--christian .locations-header::before {display:none;}
+.scene-subpage--christian .location-cross-image {display:block;width:44px;height:58px;object-fit:contain;margin:0 auto 22px;}
