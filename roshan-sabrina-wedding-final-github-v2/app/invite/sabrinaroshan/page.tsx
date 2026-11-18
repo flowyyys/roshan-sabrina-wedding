@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { WeddingInvitation } from "@/app/WeddingInvitation";
+import { ChristianInvitation } from "@/app/ChristianInvitation";
 import { invitations } from "@/app/invitation-data";
 
 export const metadata: Metadata = {
@@ -7,6 +7,11 @@ export const metadata: Metadata = {
   robots: { index: false, follow: false },
 };
 
-export default function SabrinaRoshanInvitationPage() {
-  return <WeddingInvitation data={invitations.sabrinaroshan} />;
+export default async function SabrinaRoshanInvitationPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ view?: string }>;
+}) {
+  const { view } = await searchParams;
+  return <ChristianInvitation data={invitations.sabrinaroshan} initiallyOpened={view === "invitation"} />;
 }
