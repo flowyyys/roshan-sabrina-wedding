@@ -3,6 +3,8 @@
 import Link from "next/link";
 import { FormEvent, useState } from "react";
 import type { InvitationData } from "./invitation-types";
+import { InvitationAtmosphere } from "./InvitationAtmosphere";
+import "./christian-scene.css";
 
 const FLOWERS = [
   ["✿", "-148px", "-112px", "0ms"],
@@ -87,8 +89,9 @@ export function RsvpForm({
   }
 
   return (
-    <main className={`subpage-shell subpage-shell--${data.theme}`}>
-      <img className="subpage-shell__art" src={data.artUrl} alt="" />
+    <main className={`subpage-shell subpage-shell--${data.theme} ${data.theme === "christian" ? "scene-subpage" : ""}`}>
+      <img className="subpage-shell__art" src={data.theme === "christian" ? "/christian-chapel-garden.png" : data.artUrl} alt="" />
+      {data.theme === "christian" && <InvitationAtmosphere />}
       {responseAnimation?.type === "accept" ? (
         <div
           className="acceptance-bloom"
@@ -137,7 +140,7 @@ export function RsvpForm({
 
       <div className="subpage-panel rsvp-panel">
         <nav className="subpage-nav" aria-label="Invitation navigation">
-          <Link href={basePath}>← Invitation</Link>
+          <Link href={data.theme === "christian" ? `${basePath}?view=invitation` : basePath}>← Invitation</Link>
           <Link href={`${basePath}/locations`}>{data.locationLabel} →</Link>
         </nav>
 

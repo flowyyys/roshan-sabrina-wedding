@@ -5,7 +5,11 @@ import { useEffect, useRef, useState } from "react";
 const BACKGROUND_MUSIC = "/media/background-music.mp3";
 const FEATURE_VIDEO = "/media/our-song.mp4";
 
-export function BackgroundMusic() {
+export function BackgroundMusic({
+  showSong = true,
+  volume = 0.14,
+  source = BACKGROUND_MUSIC,
+}: { showSong?: boolean; volume?: number; source?: string }) {
   const [videoOpen, setVideoOpen] = useState(false);
   const [ambientMuted, setAmbientMuted] = useState(false);
   const audioRef = useRef<HTMLAudioElement>(null);
@@ -15,7 +19,7 @@ export function BackgroundMusic() {
   function startAmbientMusic() {
     const audio = audioRef.current;
     if (!audio) return;
-    audio.volume = 0.14;
+    audio.volume = volume;
     void audio.play().catch(() => {
       // Browsers can require the guest's first interaction before sound starts.
     });
@@ -99,7 +103,7 @@ export function BackgroundMusic() {
     <>
       <audio
         ref={audioRef}
-        src={BACKGROUND_MUSIC}
+        src={source}
         autoPlay
         loop
         muted={ambientMuted}
@@ -114,10 +118,9 @@ export function BackgroundMusic() {
           onClick={toggleAmbientMute}
           aria-pressed={ambientMuted}
         >
-          <span aria-hidden="true">{ambientMuted ? "🔇" : "♫"}</span>
           {ambientMuted ? "Unmute music" : "Mute music"}
         </button>
-        <button
+        {showSong && <button
           className="music-toggle"
           type="button"
           onClick={openFeatureVideo}
@@ -125,10 +128,10 @@ export function BackgroundMusic() {
         >
           <span aria-hidden="true">▶</span>
           Play our song
-        </button>
+        </button>}
       </div>
 
-      <div
+      {showSong && <div
         ref={videoPanelRef}
         className={`video-modal ${videoOpen ? "is-open" : ""}`}
         role="dialog"
@@ -150,7 +153,7 @@ export function BackgroundMusic() {
           preload="auto"
           onEnded={closeFeatureVideo}
         />
-      </div>
+      </div>}
     </>
   );
 }

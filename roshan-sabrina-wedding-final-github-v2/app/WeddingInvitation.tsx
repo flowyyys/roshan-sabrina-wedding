@@ -27,12 +27,11 @@ export function WeddingInvitation({
   data: LandingInvitationData;
 }) {
   const [opening, setOpening] = useState(true);
-  const [countdown, setCountdown] = useState(() =>
-    getCountdown(data.date.countdownTarget),
-  );
+  const [countdown, setCountdown] = useState("A day to remember");
   const basePath = `/invite/${data.accessCode}`;
 
   useEffect(() => {
+    setCountdown(getCountdown(data.date.countdownTarget));
     const openingTimer = window.setTimeout(() => setOpening(false), 1050);
     const countdownTimer = window.setInterval(
       () => setCountdown(getCountdown(data.date.countdownTarget)),

@@ -1,15 +1,18 @@
 import Link from "next/link";
 import type { InvitationData } from "./invitation-types";
+import { InvitationAtmosphere } from "./InvitationAtmosphere";
+import "./christian-scene.css";
 
 export function InvitationLocations({ data }: { data: InvitationData }) {
   const basePath = `/invite/${data.accessCode}`;
 
   return (
-    <main className={`subpage-shell subpage-shell--${data.theme}`}>
-      <img className="subpage-shell__art" src={data.artUrl} alt="" />
+    <main className={`subpage-shell subpage-shell--${data.theme} ${data.theme === "christian" ? "scene-subpage" : ""}`}>
+      <img className="subpage-shell__art" src={data.theme === "christian" ? "/christian-chapel-garden.png" : data.artUrl} alt="" />
+      {data.theme === "christian" && <InvitationAtmosphere />}
       <div className="subpage-panel locations-panel">
         <nav className="subpage-nav" aria-label="Invitation navigation">
-          <Link href={basePath}>← Invitation</Link>
+          <Link href={data.theme === "christian" ? `${basePath}?view=invitation` : basePath}>← Invitation</Link>
           <Link href={`${basePath}/rsvp`}>RSVP →</Link>
         </nav>
 
